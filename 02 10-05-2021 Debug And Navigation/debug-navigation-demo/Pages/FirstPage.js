@@ -27,10 +27,13 @@ export default class FirstPage extends Component {
         <Text style={{ margin: 10 }}>Debug and Navigation Demo!</Text>
         <Button title="Say Hello" onPress={this.btnSayHello} />
         <View style={{ margin: 20 }}>
-          <Button title="go 2 SeconP" onPress={()=>{this.props.navigation.navigate('SecondPage');}} />
+          <Button title="go 2 SeconP" onPress={() => {
+            //this.props.navigation.navigate('SecondPage');
+            this.props.navigation.navigate('SecondPage', { user: 'Lucy ' + new Date().getSeconds() });
+          }} />
         </View>
-        <View style={{ margin: 20 }}>
-          <Button title="go 2 TabP" onPress={()=>{this.props.navigation.navigate('MaterialTabbedPageNavigator');}} />
+        <View style={{ margin: 10 }}>
+          <Button title="go 2 TabP" onPress={() => { this.props.navigation.navigate('MaterialTabbedPageNavigator'); }} />
         </View>
 
         <TouchableOpacity onPress={this.btnSayHello}>
@@ -44,6 +47,12 @@ export default class FirstPage extends Component {
             <Text style={{ color: 'green', fontSize: 30 }}>TO</Text>
           </View>
         </TouchableOpacity>
+        <View style={{ margin: 10 }}>
+          <Button title="open Drawer" onPress={() => { this.props.navigation.openDrawer(); }} />
+        </View>
+        <View style={{ margin: 10 }}>
+          <Button title="focus listner" onPress={() => { this.props.navigation.navigate('ThirdPage'); }} />
+        </View>
         {this.state.showLbl && <Text>Hello World {this.state.num}</Text>}
         <StatusBar style="auto" />
       </View>
